@@ -2,21 +2,11 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Search, Menu, Bell, User, Mic } from 'lucide-react';
-import { useVideo } from '@/context/VideoContext';
+import { Menu, Bell, User, Mic } from 'lucide-react';
+import SearchAutocomplete from './SearchAutocomplete';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { searchQuery, setSearchQuery, searchVideos } = useVideo();
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    searchVideos(searchQuery);
-  };
-
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  };
 
   return (
     <nav className="bg-youtube-dark text-white px-4 py-3 sticky top-0 z-50">
@@ -37,26 +27,8 @@ const Navbar: React.FC = () => {
           </Link>
         </div>
 
-        {/* Center - Search Bar */}
-        <div className="flex-1 max-w-2xl mx-4">
-          <form onSubmit={handleSearch} className="flex">
-            <div className="flex-1 relative">
-              <input
-                type="text"
-                placeholder="Search"
-                value={searchQuery}
-                onChange={handleSearchChange}
-                className="w-full bg-black text-white px-4 py-2 rounded-l-full border border-youtube-gray focus:border-blue-500 focus:outline-none"
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-youtube-gray px-6 py-2 rounded-r-full border border-l-0 border-youtube-gray hover:bg-youtube-lightGray transition-colors"
-            >
-              <Search size={20} />
-            </button>
-          </form>
-        </div>
+        {/* Center - Search Bar with Autocomplete */}
+        <SearchAutocomplete />
 
         {/* Right side - User actions */}
         <div className="flex items-center space-x-2">

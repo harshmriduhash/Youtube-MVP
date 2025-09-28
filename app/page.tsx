@@ -1,13 +1,22 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
 import VideoCard from '@/components/VideoCard';
 import { useVideo } from '@/context/VideoContext';
 
 export default function HomePage() {
-  const { videos, searchQuery, searchResults } = useVideo();
+  const searchParams = useSearchParams();
+  const { videos, searchQuery, searchResults, searchVideos } = useVideo();
+  const query = searchParams.get('q');
+
+  useEffect(() => {
+    if (query) {
+      searchVideos(query);
+    }
+  }, [query, searchVideos]);
 
   const displayVideos = searchQuery ? searchResults : videos;
 
