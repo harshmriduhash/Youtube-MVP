@@ -31,6 +31,7 @@ youtube-2-mvp/
 ├── app/                          # Next.js App Router
 │   ├── api/                      # API routes
 │   │   ├── videos/              # Video endpoints
+│   │   │   └── [id]/            # Individual video endpoint
 │   │   ├── search/              # Search endpoint
 │   │   └── comments/            # Comments endpoint
 │   ├── video/[id]/              # Dynamic video pages
@@ -38,16 +39,25 @@ youtube-2-mvp/
 │   ├── profile/                 # User profile page
 │   ├── trending/                # Trending videos page
 │   ├── subscriptions/           # Subscriptions page
+│   ├── library/                 # User's video library
+│   ├── history/                 # Watch history page
+│   ├── my-videos/               # User's uploaded videos
+│   ├── watch-later/             # Watch later playlist
+│   ├── liked/                   # Liked videos page
+│   ├── settings/                # User settings page
+│   ├── help/                    # Help center page
+│   ├── report/                  # Content reporting page
 │   ├── globals.css              # Global styles
 │   ├── layout.tsx               # Root layout
 │   └── page.tsx                 # Home page
 ├── components/                   # React components
 │   ├── Navbar.tsx               # Top navigation
-│   ├── Sidebar.tsx              # Side navigation
-│   ├── VideoCard.tsx            # Video thumbnail card
-│   ├── VideoPlayer.tsx          # Video player component
-│   ├── CommentSection.tsx       # Comments section
+│   ├── Sidebar.tsx              # Collapsible side navigation
+│   ├── VideoCard.tsx            # Video thumbnail card (grid/list)
+│   ├── VideoPlayer.tsx          # Interactive video player
+│   ├── CommentSection.tsx       # Comments with replies
 │   ├── SearchResults.tsx        # Search results display
+│   ├── SearchAutocomplete.tsx   # Smart search autocomplete
 │   └── ProfilePage.tsx          # User profile component
 ├── context/                      # React Context
 │   └── VideoContext.tsx         # Global state management
